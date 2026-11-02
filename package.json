@@ -1,0 +1,25 @@
+{
+  "name": "sovava",
+  "version": "1.0.0",
+  "description": "ii",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html --public-url ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrew111111111111/sovava.git"
+  },
+  "keywords": [],
+  "author": "Andrew",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/andrew111111111111/sovava/issues"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0",
+    "parcel": "^2.16.4",
+    "posthtml-include": "^2.0.1"
+  }
+}
