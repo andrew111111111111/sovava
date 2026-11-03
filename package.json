@@ -18,6 +18,7 @@
     "url": "https://github.com/andrew111111111111/sovava/issues"
   },
   "devDependencies": {
+    "@parcel/transformer-posthtml": "^2.16.4",
     "parcel": "^2.16.4",
     "posthtml-include": "^2.0.1"
   }

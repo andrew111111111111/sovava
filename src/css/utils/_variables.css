@@ -1,0 +1,21 @@
+:root {
+  --fontPrimary: 'Montserrat Alternates', sans-serif;
+  --fontSecondary: 'Inter', sans-serif;
+  --fontLogo: 'Sacramento', cursive;
+  --colorCorrect: #039900;
+  --colorIncorrect: #990000;
+
+  --colorBgPrimary: #ffffff;
+  --colorBgSecondary: #d9d9d9;
+  --colorBgField: #d7d7d7;
+  --colorBgSwitch: #7a7a7a;
+  --colorBgChoose: #f1f1f1;
+  --colorBgModal: #f5f5f5;
+  --colorBgmain: #eeeeee;
+  --colorBgRPS: #000000;
+  --colorBgPagination: #797979;
+  --colorBgPaginationBullet: #d9d9d9;
+
+  --colorTextPrimary: #000000;
+  --colorTextSecondary: #7e7e7e;
+}

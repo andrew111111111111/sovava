@@ -1,0 +1,54 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+textarea {
+  padding: 0;
+  margin: 0;
+  font-weight: inherit;
+}
+ul,
+ul::marker,
+ol {
+  list-style: none;
+  unicode-bidi: none;
+  font-variant-numeric: none;
+  text-transform: none;
+  text-indent: 0px;
+  text-align: none;
+  text-align-last: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  border: 0;
+  outline: 0;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  appearance: none;
+}
+img,
+use {
+  width: 100%;
+  display: block;
+}
