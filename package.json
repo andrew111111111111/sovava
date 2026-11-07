@@ -18,7 +18,11 @@
     "url": "https://github.com/andrew111111111111/sovava/issues"
   },
   "devDependencies": {
+    "@parcel/transformer-inline-string": "^2.16.4",
     "parcel": "^2.16.4",
     "posthtml-include": "^2.0.1"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.10"
   }
 }
