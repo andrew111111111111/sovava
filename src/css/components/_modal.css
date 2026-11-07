@@ -1,0 +1,88 @@
+.backdrop {
+  background-color: var(--colorBgModal);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 10;
+  transition: opacity 200ms ease-in;
+}
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.modal {
+  position: relative;
+  background-color: var(--colorBgSecondary);
+  border-top-left-radius: 25%;
+  border-bottom-right-radius: 25%;
+  width: 930px;
+  height: 1025px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.modal-closer {
+  width: 25px;
+  position: absolute;
+  right: 30px;
+  top: 30px;
+}
+.small-modal-photo {
+  width: 132px;
+  height: 132px;
+  padding-bottom: 40px;
+}
+.modal-info {
+  display: flex;
+  gap: 70px;
+  justify-content: center;
+}
+.modal-text-info {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 45px;
+  flex-direction: column;
+}
+.modal-title {
+  color: var(--colorTextTitle);
+  font-weight: 600;
+  font-size: 24px;
+  padding-bottom: 7px;
+}
+.modal-text {
+  padding-bottom: 20px;
+  font-size: 18px;
+  color: var(--colorBgPrimary);
+}
+.modal-price {
+  padding-top: 30px;
+  display: flex;
+  gap: 13px;
+  &&::before {
+    content: "";
+    width: 30px;
+    height: 20px;
+    background-image: url(../../images/ticket.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+.modal-btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: var(--colorBgButtons);
+  font-weight: 500;
+  transform: translateY(0);
+  transition: transform 200ms ease-in;
+  &&:active {
+    transform: translateY(5px);
+  }
+}
+.modal-more {
+  background-color: var(--colorBgSecondary);
+  border: 1px var(--colorBgButtons) solid;
+  color: var(--colorBgButtons);
+}
