@@ -1,5 +1,6 @@
 @import "./utils/_variables.css";
 @import "./global/_reset.css";
 @import "./global/_global.css";
+@import "./components/event.css";
 /* @import "./components/_container.css"; */
 @import "https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css";
