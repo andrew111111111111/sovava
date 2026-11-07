@@ -1,8 +1,8 @@
 body {
   font-family: var(--fontPrimary);
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 400;
   color: var(--colorTextPrimary);
   line-height: 1.25;
-  background-color: var(--colorBgMain);
+  background-color: var(--colorBgPrimary);
 }
