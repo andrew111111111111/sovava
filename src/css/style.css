@@ -1,8 +1,11 @@
 @import "./utils/_variables.css";
 @import "./global/_reset.css";
 @import "./global/_global.css";
-@import "./components/event.css";
 @import "./components/container.css";
 @import "https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css";
-@import "./components/footer.css";
+
+@import "./components/_header.css";
+@import "./components/event.css";
 @import "./components/_modal.css";
+@import "./components/footer.css";
+
