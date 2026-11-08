@@ -1,0 +1,21 @@
+.footer-bottom {
+  background-color: var(--colorBgPrimary);
+  text-align: center;
+  padding-top: 190px;
+  padding-bottom: 20px;
+  font-size: 14px;
+  font-family: var(--fontPrimary), sans-serif;
+  color: var(--colorTextPrimary);
+  opacity: 0.8;
+}
+
+.footer-copyright {
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.footer-heart {
+  color: #ff3b30;
+  display: inline-board;
+  margin: 0 2px;
+}

@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 1280px;
+  padding-inline: 115px;
+  margin-inline: auto;
+}
+@media (max-width: 1023px) {
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 780px;
+    padding-inline: 85px;
+    margin-inline: auto;
+  }
+}
+@media (max-width: 767px) {
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 330px;
+    padding-inline: 25px;
+    margin-inline: auto;
+  }
+}

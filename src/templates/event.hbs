@@ -1,0 +1,14 @@
+{{#each this}}
+  <li class="event__item">
+    <article class="event">
+      <div class="event__photo">
+        <img class="event__img" src="{{img}}" alt="{{name}}" />
+      </div>
+      <div class="event__info--box">
+        <h2 class="event__title">{{name}}</h2>
+        <p class="event__date">{{date}}</p>
+        <p class="event__place">{{place}}</p>
+      </div>
+    </article>
+  </li>
+{{/each}}
