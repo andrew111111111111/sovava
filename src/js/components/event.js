@@ -8,6 +8,7 @@ const yyf = async () => {
   try {
     const eventList = document.querySelector(".event__list");
     const data = await getEvents();
+
     const html = eventMakeMurkup(normalizeDate(data));
     eventList.innerHTML = html;
   } catch (error) {
@@ -18,6 +19,7 @@ const yyf = async () => {
 yyf();
 
 const normalizeDate = (data) => {
+
   console.log(data._embedded.events);
   const currentData = data._embedded.events;
   const normalizedEvents = [];
@@ -31,4 +33,5 @@ const normalizeDate = (data) => {
     normalizedEvents.push(event);
   }
   return normalizedEvents;
+
 };
