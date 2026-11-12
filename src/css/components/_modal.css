@@ -1,18 +1,19 @@
 .backdrop {
   background-color: var(--colorBgModal);
   position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
+  inset: 0;
   z-index: 10;
   transition: opacity 200ms ease-in;
   display: flex;
   justify-content: center;
+  display: flex;
+  align-items: center;
 }
 .backdrop.is-hidden {
   opacity: 0;
   pointer-events: none;
 }
+
 .modal {
   position: relative;
   background-color: var(--colorBgSecondary);
@@ -34,18 +35,31 @@
 .small-modal-photo {
   width: 132px;
   height: 132px;
-  padding-bottom: 40px;
+  border-radius: 50%;
+  overflow: hidden;
 }
 .modal-info {
+  padding-top: 40px;
   display: flex;
   gap: 70px;
   justify-content: center;
+  padding-bottom: 40px;
 }
 .modal-text-info {
   display: flex;
   justify-content: center;
   padding-bottom: 45px;
   flex-direction: column;
+  max-width: 450px;
+}
+
+.large-modal-photo {
+  overflow: hidden;
+  width: 360px;
+  height: 640px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .modal-title {
   color: var(--colorTextTitle);
@@ -59,18 +73,22 @@
   color: var(--colorBgPrimary);
 }
 .modal-price {
-  padding-top: 30px;
+  padding-top: 7px;
   display: flex;
   gap: 13px;
-  &&::before {
-    content: "";
-    width: 30px;
-    height: 20px;
-    background-image: url(../../images/ticket.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+  align-items: center;
+}
+.vip-price {
+  padding-top: 30px;
+}
+.modal-price::before {
+  content: "";
+  width: 30px;
+  height: 20px;
+  background-image: url(../../images/ticket.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .modal-btn {
   padding: 10px 20px;
@@ -79,6 +97,7 @@
   font-weight: 500;
   transform: translateY(0);
   transition: transform 200ms ease-in;
+  width: 150px;
   &&:active {
     transform: translateY(5px);
   }
@@ -87,4 +106,58 @@
   background-color: var(--colorBgSecondary);
   border: 1px var(--colorBgButtons) solid;
   color: var(--colorBgButtons);
+  width: 265px;
+}
+@media (max-width: 1023) {
+  .modal {
+    width: 595px;
+  }
+  .large-modal-photo {
+    width: 235px;
+    height: 415px;
+  }
+  .modal-text-info {
+    align-items: center;
+    width: 265px;
+  }
+  .modal-title {
+    font-size: 20px;
+    padding-bottom: 5px;
+  }
+  .modal-text {
+    padding-bottom: 10px;
+    font-size: 16px;
+  }
+}
+@media (max-width: 767px) {
+  .modal {
+    border-top-left-radius: 150px;
+    border-bottom-right-radius: 150px;
+    width: 280px;
+    height: 915px;
+    padding-bottom: 100px;
+  }
+
+  .large-modal-photo {
+    display: none;
+  }
+  .modal-info {
+    padding-top: 20px;
+    padding-bottom: 0;
+  }
+  .modal-text-info {
+    width: 245px;
+    text-align: center;
+  }
+  .modal-title {
+    font-size: 20px;
+    padding-bottom: 5px;
+  }
+  .modal-text {
+    padding-bottom: 10px;
+    font-size: 16px;
+  }
+  .modal-more {
+    padding: 10px 3px;
+  }
 }

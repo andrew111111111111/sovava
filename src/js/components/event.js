@@ -27,6 +27,7 @@ const normalizeDate = (data) => {
       name: data.name,
       date: data.dates.start.localDate,
       place: data._embedded.venues[0].city.name,
+      id: data.id,
     };
     normalizedEvents.push(event);
   }
