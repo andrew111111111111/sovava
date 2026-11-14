@@ -1,9 +1,9 @@
 .footer-bottom {
   background-color: var(--colorBgPrimary);
   text-align: center;
-  padding-top: 190px;
+  padding-top: 60px; /* Базовий відступ для десктопу */
   padding-bottom: 20px;
-  font-size: 14px;
+  font-size: 16px;
   font-family: var(--fontPrimary), sans-serif;
   color: var(--colorTextPrimary);
   opacity: 0.8;
@@ -16,6 +16,26 @@
 
 .footer-heart {
   color: #ff3b30;
-  display: inline-board;
+  display: inline-block;
   margin: 0 2px;
+}
+
+@media screen and (max-width: 1279.98px) {
+  .footer-bottom {
+    padding-top: 60px;
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+  .footer-bottom {
+    padding-top: 40px;
+  }
+
+  .footer-copyright {
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 14px;
+    line-height: 1.4;
+  }
 }
