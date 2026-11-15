@@ -1,6 +1,6 @@
 import Handlebars from "handlebars";
 import tempalteEventList from "bundle-text:../../../src/templates/event.hbs";
-import { getEvents } from "./config";
+import { getEvents } from "../api.js";
 
 const eventMakeMurkup = Handlebars.compile(tempalteEventList);
 
