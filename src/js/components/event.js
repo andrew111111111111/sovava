@@ -7,7 +7,6 @@ const bonus = document.querySelector(".bonus__list")
 const eventMakeMurkup = Handlebars.compile(tempalteEventList);
 
 
-agination
 const min = 0;
 const max = 19;
 
