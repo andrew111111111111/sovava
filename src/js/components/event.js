@@ -2,10 +2,12 @@ import Handlebars from "handlebars";
 import tempalteEventList from "bundle-text:../../../src/templates/event.hbs";
 import bonusEvent from "bundle-text:../../templates/bonus.hbs";
 import { getEvents, getEventById } from "../api.js";
-const bonus = document.querySelector(".bonus__list");
+const bonus = document.querySelector(".bonus__list")
 
 const eventMakeMurkup = Handlebars.compile(tempalteEventList);
 
+
+agination
 const min = 0;
 const max = 19;
 

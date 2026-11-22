@@ -1,18 +1,22 @@
-import Handlebars from "handlebars";
-import { countryList } from "bundle-text:../../../src/templates/country.hbs";
-import { getEvents } from "../api.js";
+import Handlebars from 'handlebars';
+import  countryList  from 'bundle-text:../../../src/templates/country.hbs';
+import { countries } from '../data/countries';
+const headerList = document.querySelector('.country-select');
+console.log(countries)
+const normalizeData = data => {
+  const normalizedEvents = [];
+  const event = {
+    country: data._embedded.venues[0].city.name,
+  };
+  normalizedEvents.push(event);
 
-const headerSelect = document.querySelector(".header-select");
-const normalizedEvents = [];
-const event = {
-  country: currentData._embedded.venues[0].city.name,
+  return normalizedEvents;
+
 };
-normalizedEvents.push(event);
 
 const headerListMarkup = () => {
-  const markup = Handlebars.compile(countryList);
-  const result = markup(normalizedEvents);
-
-  headerSelect.innerHTML = result;
-};
-headerListMarkup();
+const markup = Handlebars.compile(countryList);
+    const result = markup(countries);
+    headerList.innerHTML = result;
+}
+headerListMarkup()
