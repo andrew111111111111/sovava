@@ -6,3 +6,4 @@
 @import "https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css";
 
 @import "./components/_modal.css";
+@import "./components/_errormodal.css";
