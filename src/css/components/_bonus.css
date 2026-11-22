@@ -1,0 +1,13 @@
+.bonus__title {
+  text-align: center;
+  padding-top: 80px;
+}
+.bonus__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding-top: 24px;
+}
