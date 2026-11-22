@@ -1,3 +1,6 @@
+img {
+  width: auto;
+}
 .event__title {
   font-size: 16px;
   font-weight: 700;
@@ -35,8 +38,11 @@
   align-items: center;
   flex-direction: column;
 }
+
 .event__photo {
   display: flex;
+  justify-content: center;
+  align-items: center;
   width: 180px;
   height: 227px;
   border-top-left-radius: 50px;
