@@ -1,13 +1,18 @@
 import Handlebars from "handlebars";
 import tempalteEventList from "bundle-text:../../../src/templates/event.hbs";
+import bonusEvent from "bundle-text:../../templates/bonus.hbs";
 import { getEvents, getEventById } from "../api.js";
-const bonus = document.querySelector(".bonus");
+const bonus = document.querySelector(".bonus__list");
+
 
 const eventMakeMurkup = Handlebars.compile(tempalteEventList);
 const min = 0;
 const max = 19;
 
-const yyf = async () => {
+const min = 0;
+const max = 19;
+
+const renderSections = async () => {
   try {
     const eventList = document.querySelector(".event__list");
     const data = await getEvents();
@@ -19,17 +24,16 @@ const yyf = async () => {
     for (let i = 0; i < 3; i++) {
       const rnm = Math.floor(Math.random() * (max - min + 1) + min);
       const event = events[rnm];
-      console.log(event);
+      bonus.append(event);
     }
   } catch (error) {
     console.log("Відбулася помилка: ", error);
   }
 };
 
-yyf();
+renderSections();
 
 const normalizeDate = (data) => {
-  console.log(data._embedded.events);
   const currentData = data._embedded.events;
   const normalizedEvents = [];
   for (const data of currentData) {
