@@ -1,5 +1,9 @@
 import { getEvents } from "../api.js";
 import { getEventById } from "../api.js";
+import templateError from "bundle-text:../../../src/templates/error.hbs";
+import Handlebars from "handlebars";
+const errorBackdrop = document.querySelector(".error-backdrop");
+const errorModal = document.querySelector(".error-text-container");
 const textPeople = document.querySelector(".text-people");
 const textPlaceSpan = document.querySelector(".text-place-span");
 const textPlace = document.querySelector(".text-place");
@@ -9,6 +13,8 @@ const textInfo = document.querySelector(".text-info");
 const smallPhoto = document.querySelector("[data-photo-small]");
 const largePhoto = document.querySelector(".large-modal-photo");
 const modal = document.querySelector(".backdrop");
+const body = document.querySelector("body");
+const madeMarkup = Handlebars.compile(templateError);
 const truncateText = (text) => {
   if (text.length <= 120) return text;
 
@@ -22,8 +28,12 @@ const handleEventModalOpen = async (event) => {
     const event = await getEventById(eventId);
     const normaEvent = await normalizeData(event);
     await renderTextModal(normaEvent[0]);
+    body.classList.add("no-scroll");
   } catch (error) {
-    console.log(error);
+    body.classList.add("no-scroll");
+    const errorHtml = madeMarkup(error);
+    errorModal.insertAdjacentHTML("beforeend", errorHtml);
+    errorBackdrop.classList.remove("is-hidden");
   }
 };
 const renderTextModal = async (eventData) => {
@@ -49,7 +59,10 @@ const renderTextModal = async (eventData) => {
 
     textInfo.addEventListener("click", openMiniModal);
   } catch (error) {
-    console.log("Відбулася помилка: ", error);
+    body.classList.add("no-scroll");
+    const errorHtml = madeMarkup(error);
+    errorModal.insertAdjacentHTML("beforeend", errorHtml);
+    errorBackdrop.classList.remove("is-hidden");
   }
 };
 const normalizeData = (data) => {
@@ -75,6 +88,7 @@ const closer = document.querySelector(".modal-closer");
 
 const handleCloseModal = () => {
   modal.classList.add("is-hidden");
+  body.classList.remove("no-scroll");
 };
 
 closer.addEventListener("click", handleCloseModal);
@@ -82,6 +96,21 @@ closer.addEventListener("click", handleCloseModal);
 const handleCloseModalByBackdrop = (event) => {
   if (event.target.closest(".modal")) return;
   modal.classList.add("is-hidden");
+  body.classList.remove("no-scroll");
 };
 
 modal.addEventListener("click", handleCloseModalByBackdrop);
+const handleCloseErrorModal = (event) => {
+  if (event.target.closest(".error-container")) return;
+  errorBackdrop.classList.add("is-hidden");
+  body.classList.remove("no-scroll");
+};
+errorBackdrop.addEventListener("click", handleCloseErrorModal);
+
+const errorCloser = document.querySelector(".error-closer");
+const handleCloseErrorModalByBtn = () => {
+  errorBackdrop.classList.add("is-hidden");
+  body.classList.remove("no-scroll");
+  errorModal.innerHTML = "";
+};
+errorCloser.addEventListener("click", handleCloseErrorModalByBtn);

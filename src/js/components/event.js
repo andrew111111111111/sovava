@@ -4,7 +4,10 @@ import bonusEvent from "bundle-text:../../templates/bonus.hbs";
 import { getEvents, getEventById } from "../api.js";
 const bonus = document.querySelector(".bonus__list");
 
+
 const eventMakeMurkup = Handlebars.compile(tempalteEventList);
+const min = 0;
+const max = 19;
 
 const min = 0;
 const max = 19;
