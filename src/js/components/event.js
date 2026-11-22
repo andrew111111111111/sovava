@@ -2,13 +2,12 @@ import Handlebars from "handlebars";
 import tempalteEventList from "bundle-text:../../../src/templates/event.hbs";
 import bonusEvent from "bundle-text:../../templates/bonus.hbs";
 import { getEvents, getEventById } from "../api.js";
-const bonus = document.querySelector(".bonus__list");
-
+const bonus = document.querySelector(".bonus__list")
 
 const eventMakeMurkup = Handlebars.compile(tempalteEventList);
-const min = 0;
-const max = 19;
 
+
+agination
 const min = 0;
 const max = 19;
 
@@ -61,4 +60,14 @@ const normalizeEvent = (data, id) => {
   };
   console.log(event);
   normalizedEvents.push(event);
+};
+
+export const renderEventsSection = async ({ page = 1, size = 20 } = {}) => {
+  const eventList = document.querySelector(".event__list");
+  if (!eventList) return 1;
+  const data = await getEvents({ page, size });
+  const html = eventMakeMurkup(normalizeDate(data));
+  eventList.innerHTML = html;
+  const apiTotalPages = data?.page?.totalPages ?? 1;
+  return Math.min(apiTotalPages, 50);
 };

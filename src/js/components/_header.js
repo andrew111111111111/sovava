@@ -1,4 +1,3 @@
-
 import Handlebars from 'handlebars';
 import  countryList  from 'bundle-text:../../../src/templates/country.hbs';
 import { countries } from '../data/countries';
@@ -10,7 +9,7 @@ const normalizeData = data => {
     country: data._embedded.venues[0].city.name,
   };
   normalizedEvents.push(event);
-  // console.log(normalizedEvents);
+
   return normalizedEvents;
 
 };
@@ -21,4 +20,3 @@ const markup = Handlebars.compile(countryList);
     headerList.innerHTML = result;
 }
 headerListMarkup()
-
