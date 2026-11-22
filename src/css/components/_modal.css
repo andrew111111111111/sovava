@@ -1,3 +1,6 @@
+.no-scroll {
+  overflow: hidden;
+}
 .backdrop {
   background-color: var(--colorBgModal);
   position: fixed;
