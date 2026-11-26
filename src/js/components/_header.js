@@ -1,7 +1,7 @@
 import Handlebars from 'handlebars';
 import countryList from 'bundle-text:../../../src/templates/country.hbs';
 import { countries } from '../data/countries';
-import { renderCountryEvents } from './event.js';
+import { renderCountryEvents, renderNameEvent} from './event.js';
 
 const headerList = document.querySelector('.country-select');
 
@@ -22,3 +22,13 @@ select.addEventListener('change', async () => {
     console.log(error);
   }
 });
+
+const headerInput = document.querySelector('.header-input');
+
+headerInput.addEventListener("input", async (e) => {
+  try {
+    await renderNameEvent(headerInput.value);
+  } catch (err) {
+    console.log(err);
+  }
+})
