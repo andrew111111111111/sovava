@@ -1,8 +1,8 @@
-import Handlebars from "handlebars";
-import tempalteEventList from "bundle-text:../../../src/templates/event.hbs";
-import bonusEvent from "bundle-text:../../templates/bonus.hbs";
-import { getEvents, getEventByCountry } from "../api.js";
-const bonus = document.querySelector(".bonus__list");
+import Handlebars from 'handlebars';
+import tempalteEventList from 'bundle-text:../../../src/templates/event.hbs';
+import bonusEvent from 'bundle-text:../../templates/bonus.hbs';
+import { getEvents, getEventByCountry, getEventByName } from '../api.js';
+const bonus = document.querySelector('.bonus__list');
 
 const eventMakeMurkup = Handlebars.compile(tempalteEventList);
 
@@ -11,26 +11,26 @@ const max = 19;
 
 const renderSections = async () => {
   try {
-    const eventList = document.querySelector(".event__list");
+    const eventList = document.querySelector('.event__list');
     const data = await getEvents();
 
     const html = eventMakeMurkup(normalizeDate(data));
     eventList.innerHTML = html;
     //========================================
-    const events = document.querySelectorAll(".event__item");
+    const events = document.querySelectorAll('.event__item');
     for (let i = 0; i < 3; i++) {
       const rnm = Math.floor(Math.random() * (max - min + 1) + min);
       const event = events[rnm];
       bonus.append(event);
     }
   } catch (error) {
-    console.log("Відбулася помилка: ", error);
+    console.log('Відбулася помилка: ', error);
   }
 };
 
 renderSections();
 
-const normalizeDate = (data) => {
+const normalizeDate = data => {
   const currentData = data._embedded.events;
   const normalizedEvents = [];
   for (const data of currentData) {
@@ -61,7 +61,7 @@ const normalizeEvent = (data, id) => {
 };
 
 export const renderEventsSection = async ({ page = 1, size = 20 } = {}) => {
-  const eventList = document.querySelector(".event__list");
+  const eventList = document.querySelector('.event__list');
   if (!eventList) return 1;
   const data = await getEvents({ page, size });
   const html = eventMakeMurkup(normalizeDate(data));
@@ -69,12 +69,16 @@ export const renderEventsSection = async ({ page = 1, size = 20 } = {}) => {
   const apiTotalPages = data?.page?.totalPages ?? 1;
   return Math.min(apiTotalPages, 50);
 };
-export const renderCountryEvents = async (country) => {
-  const eventList = document.querySelector(".event__list");
-
+export const renderCountryEvents = async country => {
+  const eventList = document.querySelector('.event__list');
   const data = await getEventByCountry(country);
-
   const eventHtml = eventMakeMurkup(normalizeDate(data));
+  eventList.innerHTML = eventHtml;
+};
 
+export const renderNameEvent = async name => {
+  const eventList = document.querySelector('.event__list');
+  const data = await getEventByName(name);
+  const eventHtml = eventMakeMurkup(normalizeDate(data));
   eventList.innerHTML = eventHtml;
 };
