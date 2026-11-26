@@ -1,5 +1,5 @@
 import { getEvents } from "../api.js";
-import { getEventById } from "../api.js";
+// import { getEventById } from "../api.js";
 import templateError from "bundle-text:../../../src/templates/error.hbs";
 import Handlebars from "handlebars";
 const errorBackdrop = document.querySelector(".error-backdrop");
@@ -26,6 +26,7 @@ const handleEventModalOpen = async (event) => {
   if (!eventId) return;
   try {
     const event = await getEventById(eventId);
+    console.log(event);
     const normaEvent = await normalizeData(event);
     await renderTextModal(normaEvent[0]);
     body.classList.add("no-scroll");
@@ -59,10 +60,7 @@ const renderTextModal = async (eventData) => {
 
     textInfo.addEventListener("click", openMiniModal);
   } catch (error) {
-    body.classList.add("no-scroll");
-    const errorHtml = madeMarkup(error);
-    errorModal.insertAdjacentHTML("beforeend", errorHtml);
-    errorBackdrop.classList.remove("is-hidden");
+    console.log("Відбулася помилка: ", error);
   }
 };
 const normalizeData = (data) => {
@@ -88,7 +86,6 @@ const closer = document.querySelector(".modal-closer");
 
 const handleCloseModal = () => {
   modal.classList.add("is-hidden");
-  body.classList.remove("no-scroll");
 };
 
 closer.addEventListener("click", handleCloseModal);
@@ -96,21 +93,19 @@ closer.addEventListener("click", handleCloseModal);
 const handleCloseModalByBackdrop = (event) => {
   if (event.target.closest(".modal")) return;
   modal.classList.add("is-hidden");
-  body.classList.remove("no-scroll");
 };
 
 modal.addEventListener("click", handleCloseModalByBackdrop);
+
 const handleCloseErrorModal = (event) => {
   if (event.target.closest(".error-container")) return;
   errorBackdrop.classList.add("is-hidden");
-  body.classList.remove("no-scroll");
 };
+const errorCloser = document.querySelector(".error-closer");
 errorBackdrop.addEventListener("click", handleCloseErrorModal);
 
-const errorCloser = document.querySelector(".error-closer");
 const handleCloseErrorModalByBtn = () => {
   errorBackdrop.classList.add("is-hidden");
-  body.classList.remove("no-scroll");
   errorModal.innerHTML = "";
 };
 errorCloser.addEventListener("click", handleCloseErrorModalByBtn);
