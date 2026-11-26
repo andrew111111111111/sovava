@@ -1,7 +1,7 @@
 import Handlebars from "handlebars";
 import tempalteEventList from "bundle-text:../../../src/templates/event.hbs";
 import bonusEvent from "bundle-text:../../templates/bonus.hbs";
-import { getEvents, getEventById } from "../api.js";
+import { getEvents, getEventByCountry } from "../api.js";
 const bonus = document.querySelector(".bonus__list");
 
 const eventMakeMurkup = Handlebars.compile(tempalteEventList);
@@ -58,4 +58,23 @@ const normalizeEvent = (data, id) => {
   };
   console.log(event);
   normalizedEvents.push(event);
+};
+
+export const renderEventsSection = async ({ page = 1, size = 20 } = {}) => {
+  const eventList = document.querySelector(".event__list");
+  if (!eventList) return 1;
+  const data = await getEvents({ page, size });
+  const html = eventMakeMurkup(normalizeDate(data));
+  eventList.innerHTML = html;
+  const apiTotalPages = data?.page?.totalPages ?? 1;
+  return Math.min(apiTotalPages, 50);
+};
+export const renderCountryEvents = async (country) => {
+  const eventList = document.querySelector(".event__list");
+
+  const data = await getEventByCountry(country);
+
+  const eventHtml = eventMakeMurkup(normalizeDate(data));
+
+  eventList.innerHTML = eventHtml;
 };
