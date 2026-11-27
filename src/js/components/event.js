@@ -11,6 +11,7 @@ const max = 19;
 
 const renderSections = async () => {
   try {
+    console.log(await getEvents());
     const eventList = document.querySelector(".event__list");
     const data = await getEvents();
 
@@ -18,7 +19,8 @@ const renderSections = async () => {
     eventList.innerHTML = html;
     //========================================
     const events = document.querySelectorAll(".event__item");
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 4; i++) {
+      console.log(i);
       const rnm = Math.floor(Math.random() * (max - min + 1) + min);
       const event = events[rnm];
       bonus.append(event);
