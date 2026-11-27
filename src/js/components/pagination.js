@@ -27,7 +27,8 @@ const renderPagination = () => {
       if (item === "...") {
         return `<li class="pagination__item"><span class="pagination__dots">...</span></li>`;
       }
-      const activeClass = item === currentPage ? " pagination__btn--active" : "";
+      const activeClass =
+        item === currentPage ? " pagination__btn--active" : "";
       return `
         <li class="pagination__item">
           <button type="button" class="pagination__btn${activeClass}" data-page="${item}">

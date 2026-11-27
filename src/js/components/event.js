@@ -19,6 +19,7 @@ const renderSections = async () => {
     //========================================
     const events = document.querySelectorAll('.event__item');
     for (let i = 0; i < 3; i++) {
+      console.log(i);
       const rnm = Math.floor(Math.random() * (max - min + 1) + min);
       const event = events[rnm];
       bonus.append(event);
