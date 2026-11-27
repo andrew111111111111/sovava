@@ -18,3 +18,12 @@ export const getEventByCountry = async (country) => {
   if (!response.ok) throw Error("Get api error: " + response.statusText);
   return response.json();
 };
+
+export const getEventByName = async name => {
+  const response = await fetch(
+    `${baseUrl}.json?keyword=${name}&apikey=${key}`
+  );
+  if (!response.ok) throw Error('Get api error: ' + response.statusText);
+  return response.json();
+};
+
